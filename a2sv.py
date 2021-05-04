@@ -125,7 +125,7 @@ def runScan(s_type):
     global crime_result
     global anonymous_result
     
-    print "GREEN"
+    print("GREEN")
     # SSL Check Logic --------------------------- 
     showDisplay(displayMode,GREEN+"[INF] Check the SSL.."+END)
     result = subprocess.Popen(['timeout','4','openssl','s_client','-connect',targetIP+":"+str(port)], stderr=subprocess.STDOUT, stdout=subprocess.PIPE).communicate()[0]
@@ -186,7 +186,7 @@ def runScan(s_type):
             showDisplay(displayMode,GREEN+"[RES] Finish scan all vulnerability.."+END)
 
 def outVersion():
-    print "A2SV v"+a2sv_version
+    print("A2SV v"+a2sv_version)
 
 def updateVersion():
     print GREEN+"[INF] Update A2SV"+END
@@ -297,7 +297,7 @@ def outReport(o_ck,o_path,tmode):
     ('State', 'v_state', 15)
 ]
     if o_ck == 1:
-        print "The result is in \""+str(o_path)+"\"."
+        print("The result is in \""+str(o_path)+"\".")
         if tmode == 1:
             of = open(str(o_path),'a')
             of.write(" [TARGET]: "+targetIP+"\r\n")
@@ -409,20 +409,20 @@ if displayMode == 0:
 if targetMode == 1:
     i=0
     imax = len(targetfileList)
-    print "_________________________________________________________________________"
-    print "                              [A2SV REPORT]                             "
+    print("_________________________________________________________________________")
+    print("                              [A2SV REPORT]                             ")
     while(i<imax):
         targetIP = targetfileList.pop()
         runScan(checkVun)
         outReport(output_ck,output_path,targetMode)
         i+=1
-    print "_________________________________________________________________________"
+    print("_________________________________________________________________________")
 else:
     runScan(checkVun)
-    print "_________________________________________________________________________"
-    print "                              [A2SV REPORT]                             "
+    print("_________________________________________________________________________")
+    print("                              [A2SV REPORT]                             ")
     outReport(output_ck,output_path,targetMode)
-    print "_________________________________________________________________________"
+    print("_________________________________________________________________________")
 showDisplay(displayMode,RED+"[FIN] Scan Finish!"+END)
 
 
